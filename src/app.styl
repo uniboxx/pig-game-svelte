@@ -1,0 +1,31 @@
+@import "../public/styl/_variables.styl"
+
+*
+  margin 0
+  padding 0
+  box-sizing inherit
+
+html
+  box-sizing border-box
+
+body
+  display flex
+  justify-content center
+  align-items center
+  font-family 'Nunito', sans-serif
+  font-weight 400
+  min-height 100svh
+  color #333
+  background-image linear-gradient(to top left, gradient1 0%, gradient2 100%)
+
+main
+  display flex
+  position relative
+  width 100svw
+  height 100svh
+  background-color rgba(255, 255, 255, 0.35)
+  backdrop-filter blur(200px)
+  filter blur()
+  box-shadow 0 3rem 5rem rgba(0, 0, 0, 0.25)
+  border-radius 9px
+  overflow hidden

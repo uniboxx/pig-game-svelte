@@ -1,47 +1,42 @@
 <script>
-  import svelteLogo from './assets/svelte.svg'
-  import viteLogo from '/vite.svg'
-  import Counter from './lib/Counter.svelte'
+  import Player from './lib/Player.svelte';
+  import Button from './lib/Button.svelte';
+
+  let active;
 </script>
 
-<main>
-  <div>
-    <a href="https://vitejs.dev" target="_blank" rel="noreferrer">
-      <img src={viteLogo} class="logo" alt="Vite Logo" />
-    </a>
-    <a href="https://svelte.dev" target="_blank" rel="noreferrer">
-      <img src={svelteLogo} class="logo svelte" alt="Svelte Logo" />
-    </a>
-  </div>
-  <h1>Vite + Svelte</h1>
+<Player
+  suffix="--0"
+  playerLabel="Player 1"
+  score="43"
+  currentScore="0"
+  active="true" />
+<Player
+  suffix="--1"
+  playerLabel="Player 2"
+  score="24"
+  currentScore="0"
+  active="false" />
 
-  <div class="card">
-    <Counter />
-  </div>
+<img src="img/dice-5.png" alt="Playing dice" class="dice" />
 
-  <p>
-    Check out <a href="https://github.com/sveltejs/kit#readme" target="_blank" rel="noreferrer">SvelteKit</a>, the official Svelte app framework powered by Vite!
-  </p>
+<Button btnClass="btn--new" btnLabel="🔄 New game" />
+<Button btnClass="btn--roll" btnLabel="🎲 Roll dice" />
+<Button btnClass="btn--hold" btnLabel="📥 Hold" />
 
-  <p class="read-the-docs">
-    Click on the Vite and Svelte logos to learn more
-  </p>
-</main>
+<style lang="stylus">
+  @import '../public/styl/_variables.styl'
+  .dice
+    position absolute
+    left 50%
+    top 16.5rem
+    transform translateX(-50%)
+    height 10rem
+    box-shadow 0 2rem 5rem rgba(0, 0, 0, 0.2)
 
-<style>
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-    transition: filter 300ms;
-  }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-  }
-  .logo.svelte:hover {
-    filter: drop-shadow(0 0 2em #ff3e00aa);
-  }
-  .read-the-docs {
-    color: #888;
-  }
+  .player--winner
+    background-color #2f2f2f
+    .name
+      font-weight 700
+      color #c7365f
 </style>
