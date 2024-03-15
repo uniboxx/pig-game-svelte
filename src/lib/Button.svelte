@@ -22,11 +22,23 @@
     text-transform uppercase
     padding 0.2rem
     width 7rem
+    color #444
+    background none
+    border none
+    font-family inherit
+    cursor pointer
+    font-weight 400
+    transition all 0.2s
+    background-color white
+    background-color rgba(255, 255, 255, 0.6)
+    backdrop-filter blur(10px)
+    border-radius 20px
+    box-shadow 0 1.75rem 3.5rem rgba(0, 0, 0, 0.1)
     &::first-letter
         font-size 1.9rem
         display inline-block
     &:active
-      transform translate(-50%, 3px)
+      transform translate(-2%, -47%)
       box-shadow 0 1rem 2rem rgba(0, 0, 0, 0.15)
     &:focus
       outline none
@@ -34,20 +46,9 @@
       width auto
       left 50%
       transform translate(-50%)
-      color #444
-      background none
-      border none
-      font-family inherit
       font-size 1.8rem
-      cursor pointer
-      font-weight 400
-      transition all 0.2s
-      background-color white
-      background-color rgba(255, 255, 255, 0.6)
-      backdrop-filter blur(10px)
       padding 0.7rem 2.5rem
       border-radius 50rem
-      box-shadow 0 1.75rem 3.5rem rgba(0, 0, 0, 0.1)
       &::first-letter
         font-size 2.4rem
         display inline-block
@@ -77,10 +78,14 @@
   .btn--hold
     bottom 0
     right 0
-    height .5remrem
+    height 4rem
+    &:active
+      transform translate(-2%, 5%)
     @media screen and (min-width sm)
       top 46.1rem
       bottom auto
       left 50%
       height auto
+      &:active
+        transform translate(-50%, 3px)
 </style>
