@@ -3,10 +3,10 @@
   export let playerLabel;
   export let score;
   export let currentScore;
-  export let active;
+  export let activePlayer = false;
 </script>
 
-<section class="player {'player' + suffix}" class:player--active={active}>
+<section class="player {'player' + suffix} {$$props.class}">
   <h2 class="name" id={'name' + suffix}>{playerLabel}</h2>
   <p class="score" id={'score' + suffix}>{score}</p>
   <div class="current">
@@ -22,26 +22,30 @@
     display flex
     flex-direction column
     align-items center
-    padding 9rem
     transition all 0.75s
+    padding 2rem 1rem
     @media screen and (min-width sm)
       padding 5rem
       
 
   .name
     position relative
-    font-size 4rem
+    font-size 2rem
     text-transform uppercase
     letter-spacing 1px
     word-spacing 2px
     font-weight 300
-    margin-bottom 1rem
+    @media screen and (min-width sm)
+      font-size 4rem
+      margin-bottom 1rem
 
   .score
-    font-size 8rem
+    font-size 4rem
     font-weight 300
     color #c7365f
-    margin-bottom auto
+    @media screen and (min-width sm)
+      font-size 8rem
+      margin-bottom auto
 
   .player--active
     background-color rgba(255, 255, 255, 0.4)
@@ -57,18 +61,28 @@
     opacity 0.8
     border-radius 9px
     color #fff
-    width 65%
-    padding 2rem
-    text-align center
     transition all 0.75s
+    padding .2rem .5rem
+    text-align center
+    @media screen and (min-width sm)
+      width 65%
+      padding 2rem
+      text-align center
 
   .current-label
     text-transform uppercase
-    margin-bottom 1rem
-    font-size 1.7rem
+    font-size .8rem
     color #ddd
+    @media screen and (min-width sm)
+      font-size 1.7rem
+      margin-bottom 1rem
+      
 
   .current-score
-    font-size 3.5rem
+    font-size 2.5rem
+    padding 0 1.5rem
+    @media screen and (min-width sm)
+      font-size 3.5rem
+      padding 0
 
 </style>
