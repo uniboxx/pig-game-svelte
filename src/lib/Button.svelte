@@ -18,12 +18,12 @@
   
   .btn
     position absolute
-    font-size 1.2rem
+    font-size 1.1rem
     text-transform uppercase
-    padding 0.3rem .2rem
-    width 6rem
+    padding 0.2rem
+    width 7rem
     &::first-letter
-        font-size 1.8rem
+        font-size 1.9rem
         display inline-block
     &:active
       transform translate(-50%, 3px)
@@ -77,8 +77,10 @@
   .btn--hold
     bottom 0
     right 0
+    height .5remrem
     @media screen and (min-width sm)
       top 46.1rem
       bottom auto
       left 50%
+      height auto
 </style>
