@@ -100,9 +100,12 @@
 <Button btnClass="btn--new" btnLabel="🔄 New game" on:click={newGame} />
 <Button btnClass="btn--roll" btnLabel="🎲 Roll dice" on:click={rollDice} />
 <Button btnClass="btn--hold" btnLabel="📥 Hold" on:click={holdScore} />
-<p>
-  Se esce 1 perdi i punti accumulati! Vince chi arriva a {scoreToWin} punti!
-</p>
+<div class="info">
+  <p>
+    Se esce 1 perdi i punti accumulati! Vince chi arriva a {scoreToWin} punti!
+  </p>
+  <p>by uniboxx</p>
+</div>
 
 <style lang="stylus">
   @import '../public/styl/_variables.styl'
@@ -122,8 +125,10 @@
       box-shadow 0 2rem 5rem rgba(0, 0, 0, 0.2)
 
   
-  
-  p
+  .info
+    display flex
+    justify-content space-between
+  .info 
     color #fff
     padding .5rem
     text-align center
