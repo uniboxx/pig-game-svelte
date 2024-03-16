@@ -80,11 +80,14 @@
       transform translate(-50%)
       top 39.3rem
       left 50%
+      max-width 30%
       font-size 1.6rem
     @media screen and (min-width lg)
       transform translate(-50%)
+      max-width auto
       top 39.3rem
       left 50%
+      font-size 1.8rem
 
   .btn--hold
     bottom 4rem
