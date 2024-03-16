@@ -44,9 +44,9 @@
       outline none
     @media screen and (min-width sm)
       width auto
-      left 50%
       transform translate(-50%)
-      font-size 1.8rem
+      left 50%
+      font-size 1.6rem
       padding 0.7rem 2.5rem
       border-radius 50rem
       &::first-letter
@@ -58,16 +58,22 @@
         box-shadow 0 1rem 2rem rgba(0, 0, 0, 0.15)
       &:focus
         outline none
+      @media screen and (min-width lg)
+        font-size 1.8rem
   .btn--new
-    top 50%
+    top 45%
     transform translateY(-50%)
     @media screen and (min-width sm)     
+      top 1rem
+      transform translate(-50%)
+      left 50%
+    @media screen and (min-width lg)     
       top 4rem
       transform translate(-50%)
       left 50%
 
   .btn--roll
-    top 50%
+    top 45%
     right 0
     transform translateY(-50%)
     @media screen and (min-width sm)
@@ -76,7 +82,7 @@
       left 50%
 
   .btn--hold
-    bottom 0
+    bottom 4rem
     right 0
     height 4rem
     &:active
@@ -88,4 +94,5 @@
       height auto
       &:active
         transform translate(-50%, 3px)
+
 </style>

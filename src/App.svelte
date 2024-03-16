@@ -3,7 +3,9 @@
   import Button from './lib/Button.svelte';
 
   const playerActive = 'player--active';
-  let score0,
+  let scoreToWin = 100;
+  let winnerPlayer,
+    score0,
     score1,
     current0,
     current1,
@@ -15,23 +17,18 @@
     player2,
     active0,
     active1,
-    current,
-    score;
-
-  // $: randomN, console.log(randomN);
+    score,
+    winner0,
+    winner1;
 
   function selectPlayer() {
-    if (currentPlayer === 0) {
-      active0 = playerActive;
-      active1 = '';
-    } else {
-      active0 = '';
-      active1 = playerActive;
-    }
+    active0 = currentPlayer === 0 ? playerActive : '';
+    active1 = currentPlayer === 0 ? '' : playerActive;
   }
 
   function newGame() {
-    score0 = score1 = current0 = current1 = current = 0;
+    score0 = score1 = current0 = current1 = 0;
+    winner0 = winner1 = '';
     currentPlayer = Math.floor(Math.random() * 2);
     selectPlayer();
 
@@ -40,6 +37,7 @@
   newGame();
 
   function rollDice() {
+    if (winner0 || winner1) return;
     randomN = Math.ceil(Math.random() * 6);
     src = `img/dice-${randomN}.png`;
     hideDice = false;
@@ -53,15 +51,21 @@
         current1 += randomN;
       }
     }
-    console.log(randomN, current);
   }
 
   function holdScore() {
+    if (winner0 || winner1) return;
     if (currentPlayer === 0) {
       score0 += current0;
+      if (score0 >= scoreToWin) {
+        winner0 = 'player--winner';
+      }
       current0 = 0;
     } else {
       score1 += current1;
+      if (score1 >= scoreToWin) {
+        winner1 = 'player--winner';
+      }
       current1 = 0;
     }
     changePlayer();
@@ -69,9 +73,11 @@
 
   function changePlayer() {
     currentPlayer = currentPlayer === 0 ? 1 : 0;
+
     selectPlayer();
-    console.log(currentPlayer);
   }
+
+  console.log(player1);
 </script>
 
 <Player
@@ -79,19 +85,24 @@
   playerLabel="Player 1"
   score={score0}
   currentScore={current0}
-  class={active0} />
+  activePlayer={active0}
+  winnerPlayer={winner0} />
 <Player
   suffix="--1"
   playerLabel="Player 2"
   score={score1}
   currentScore={current1}
-  class={active1} />
+  activePlayer={active1}
+  winnerPlayer={winner1} />
 
 <img {src} alt="Playing dice" class="dice" class:hidden={hideDice} />
 
 <Button btnClass="btn--new" btnLabel="🔄 New game" on:click={newGame} />
 <Button btnClass="btn--roll" btnLabel="🎲 Roll dice" on:click={rollDice} />
 <Button btnClass="btn--hold" btnLabel="📥 Hold" on:click={holdScore} />
+<p>
+  Se esce 1 perdi i punti accumulati! Vince chi arriva a {scoreToWin} punti!
+</p>
 
 <style lang="stylus">
   @import '../public/styl/_variables.styl'
@@ -110,9 +121,19 @@
       top 16.5rem
       box-shadow 0 2rem 5rem rgba(0, 0, 0, 0.2)
 
-  .player--winner
-    background-color #2f2f2f
-    .name
-      font-weight 700
-      color #c7365f
+  
+  
+  p
+    color #fff
+    padding .5rem
+    text-align center
+    background-color #666
+    opacity .8
+    @media screen and (min-width sm)
+      position absolute
+      bottom 1rem
+      left 50%
+      transform translateX(-50%)
+      width 100%
+      font-size 1.3rem
 </style>

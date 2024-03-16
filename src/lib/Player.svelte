@@ -3,10 +3,11 @@
   export let playerLabel;
   export let score;
   export let currentScore;
-  export let activePlayer = false;
+  export let activePlayer;
+  export let winnerPlayer;
 </script>
 
-<section class="player {'player' + suffix} {$$props.class}">
+<section class="player {'player' + suffix} {activePlayer} {winnerPlayer}">
   <h2 class="name" id={'name' + suffix}>{playerLabel}</h2>
   <p class="score" id={'score' + suffix}>{score}</p>
   <div class="current">
@@ -85,4 +86,9 @@
       font-size 3.5rem
       padding 0
 
+  .player--winner
+    background-color #2f2f2f
+    .name
+      font-weight 700
+      color #c7365f
 </style>
