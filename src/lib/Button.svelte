@@ -80,7 +80,7 @@
       transform translate(-50%)
       top 39.3rem
       left 50%
-      max-width 30%
+      max-width 28%
       font-size 1.6rem
     @media screen and (min-width lg)
       transform translate(-50%)

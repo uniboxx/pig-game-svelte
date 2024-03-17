@@ -3,21 +3,17 @@
   import Button from './lib/Button.svelte';
 
   const playerActive = 'player--active';
-  let scoreToWin = 100;
-  let winnerPlayer,
-    score0,
-    score1,
-    current0,
-    current1,
+  const scoreToWin = 100;
+  let currentPlayer,
+    hideDice,
     randomN,
-    hideDice = true,
     src,
-    currentPlayer,
-    player1,
-    player2,
     active0,
     active1,
-    score,
+    current0,
+    current1,
+    score0,
+    score1,
     winner0,
     winner1;
 
@@ -30,9 +26,8 @@
     score0 = score1 = current0 = current1 = 0;
     winner0 = winner1 = '';
     currentPlayer = Math.floor(Math.random() * 2);
-    selectPlayer();
-
     hideDice = true;
+    selectPlayer();
   }
   newGame();
 
@@ -76,8 +71,6 @@
 
     selectPlayer();
   }
-
-  console.log(player1);
 </script>
 
 <Player
@@ -85,14 +78,14 @@
   playerLabel="Player 1"
   score={score0}
   currentScore={current0}
-  activePlayer={active0}
+  isActive={active0}
   winnerPlayer={winner0} />
 <Player
   suffix="--1"
   playerLabel="Player 2"
   score={score1}
   currentScore={current1}
-  activePlayer={active1}
+  isActive={active1}
   winnerPlayer={winner1} />
 
 <img {src} alt="Playing dice" class="dice" class:hidden={hideDice} />

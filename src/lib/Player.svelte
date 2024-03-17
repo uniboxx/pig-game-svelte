@@ -3,11 +3,13 @@
   export let playerLabel;
   export let score;
   export let currentScore;
-  export let activePlayer;
+  export let isActive;
   export let winnerPlayer;
 </script>
 
-<section class="player {'player' + suffix} {activePlayer} {winnerPlayer}">
+<section
+  class="player {'player' + suffix} {isActive} {winnerPlayer}"
+  class:player--active={isActive}>
   <h2 class="name" id={'name' + suffix}>{playerLabel}</h2>
   <p class="score" id={'score' + suffix}>{score}</p>
   <div class="current">
