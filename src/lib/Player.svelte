@@ -1,15 +1,10 @@
 <script>
-  export let suffix;
-  export let playerLabel;
-  export let score;
-  export let currentScore;
-  export let isActive;
-  export let winnerPlayer;
+  let { suffix, playerLabel, score, currentScore, isActive, winnerPlayer } =
+    $props();
+  console.log(isActive);
 </script>
 
-<section
-  class="player {'player' + suffix} {isActive} {winnerPlayer}"
-  class:player--active={isActive}>
+<section class={`player ${'player' + suffix} ${isActive} ${winnerPlayer} `}>
   <h2 class="name" id={'name' + suffix}>{playerLabel}</h2>
   <p class="score" id={'score' + suffix}>{score}</p>
   <div class="current">
@@ -18,79 +13,100 @@
   </div>
 </section>
 
-<style lang="stylus">
-  @import '../../public/styl/_variables.styl'
-  .player
-    flex 1
-    display flex
-    flex-direction column
-    align-items center
-    transition all 0.75s
-    padding 2rem 1rem
-    @media screen and (min-width sm)
-      padding 5rem
-      
+<style lang="scss">
+  @use '../scss/vars';
 
-  .name
-    position relative
-    font-size 2rem
-    text-transform uppercase
-    letter-spacing 1px
-    word-spacing 2px
-    font-weight 300
-    @media screen and (min-width sm)
-      font-size 4rem
-      margin-bottom 1rem
+  .player {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.75s;
+    padding: 2rem 1rem;
+    height: 30%;
 
-  .score
-    font-size 4rem
-    font-weight 300
-    color #c7365f
-    @media screen and (min-width sm)
-      font-size 8rem
-      margin-bottom auto
+    @media screen and (min-width: vars.$sm) {
+      padding: 5rem;
+    }
+  }
 
-  .player--active
-    background-color rgba(255, 255, 255, 0.4)
-    .name
-      font-weight 700
-    .score
-      font-weight 400
-    .current
-      opacity 1
+  .name {
+    position: relative;
+    font-size: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    word-spacing: 2px;
+    font-weight: 300;
+    @media screen and (min-width: vars.$sm) {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+    }
+  }
 
-  .current
-    background-color #c7365f
-    opacity 0.8
-    border-radius 9px
-    color #fff
-    transition all 0.75s
-    padding .2rem .5rem
-    text-align center
-    @media screen and (min-width sm)
-      width 65%
-      padding 2rem
-      text-align center
+  .score {
+    font-size: 4rem;
+    font-weight: 300;
+    color: #c7365f;
+    @media screen and (min-width: vars.$sm) {
+      font-size: 8rem;
+      margin-bottom: auto;
+    }
+  }
 
-  .current-label
-    text-transform uppercase
-    font-size .8rem
-    color #ddd
-    @media screen and (min-width sm)
-      font-size 1.7rem
-      margin-bottom 1rem
-      
+  .player--active {
+    background-color: rgba(255, 255, 255, 0.4);
+    filter: none;
+    .name {
+      font-weight: 700;
+    }
+    .score {
+      font-weight: 400;
+    }
+    .current {
+      opacity: 1;
+    }
+  }
 
-  .current-score
-    font-size 2.5rem
-    padding 0 1.5rem
-    @media screen and (min-width sm)
-      font-size 3.5rem
-      padding 0
+  .current {
+    background-color: #c7365f;
+    opacity: 0.8;
+    border-radius: 9px;
+    color: #fff;
+    transition: all 0.75s;
+    padding: 0.2rem 0.5rem;
+    text-align: center;
+    @media screen and (min-width: vars.$sm) {
+      width: 65%;
+      padding: 2rem;
+      text-align: center;
+    }
+  }
 
-  .player--winner
-    background-color #2f2f2f
-    .name
-      font-weight 700
-      color #c7365f
+  .current-label {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: #ddd;
+    @media screen and (min-width: vars.$sm) {
+      font-size: 1.7rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  .current-score {
+    font-size: 2.5rem;
+    padding: 0 1.5rem;
+    @media screen and (min-width: vars.$sm) {
+      font-size: 3.5rem;
+      padding: 0;
+    }
+  }
+
+  .player--winner {
+    background-color: #2f2f2f;
+    filter: none;
+    .name {
+      font-weight: 700;
+      color: #c7365f;
+    }
+  }
 </style>

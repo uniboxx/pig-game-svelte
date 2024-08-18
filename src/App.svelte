@@ -34,7 +34,7 @@
   function rollDice() {
     if (winner0 || winner1) return;
     randomN = Math.ceil(Math.random() * 6);
-    src = `img/dice-${randomN}.png`;
+    src = `/pig-game-svelte/img/dice-${randomN}.png`;
     hideDice = false;
     if (randomN === 1) {
       current0 = current1 = 0;
@@ -100,38 +100,40 @@
   <p>by uniboxx</p>
 </div>
 
-<style lang="stylus">
-  @import '../public/styl/_variables.styl'
-  .dice
-    position absolute
-    height 4rem
-    left 50%
-    top 50%
-    transform translate(-50%,-100%)
-    &.hidden
-      display none
+<style lang="scss">
+  @use './scss/vars';
+  .dice {
+    position: absolute;
+    height: 4rem;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -100%);
+    &.hidden {
+      display: none;
+    }
+    @media screen and (min-width: vars.$sm) {
+      transform: translate(-50%);
+      height: 8rem;
+      top: 35%;
+      box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
+    }
+  }
 
-    @media screen and (min-width sm) 
-      transform translate(-50%)
-      height 10rem
-      top 16.5rem
-      box-shadow 0 2rem 5rem rgba(0, 0, 0, 0.2)
-
-  
-  .info
-    display flex
-    justify-content space-between
-  .info 
-    color #fff
-    padding .5rem
-    text-align center
-    background-color #666
-    opacity .8
-    @media screen and (min-width sm)
-      position absolute
-      bottom 1rem
-      left 50%
-      transform translateX(-50%)
-      width 100%
-      font-size 1.3rem
+  .info {
+    display: flex;
+    justify-content: space-between;
+    color: #fff;
+    padding: 0.5rem;
+    text-align: center;
+    background-color: #666;
+    opacity: 0.8;
+    @media screen and (min-width: vars.$sm) {
+      position: absolute;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      font-size: 1.3rem;
+    }
+  }
 </style>
